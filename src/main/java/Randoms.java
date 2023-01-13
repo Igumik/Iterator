@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Random;
 
 public class Randoms implements Iterable<Integer> {
@@ -12,7 +13,7 @@ public class Randoms implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator getIterator() {
+    public Iterator<Integer> iterator() {
         return new Randomizer();
     }
 
@@ -22,17 +23,13 @@ public class Randoms implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            if (index == 10) {
-                System.out.println("Выпало число 10, давайте на этом закончим");
-                return false;
-            }
             return true;
         }
 
         @Override
         public Object next() {
             index = random.nextInt(min, max) + 1;
-            return "Рандомим число " + index;
+            return index;
         }
     }
 }
